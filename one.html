@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+        <style>
+            #app{width: 100px;height: 100px;background: pink;}
+
+
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <span v-bind:title='message'></span>
+            <item></item>
+        </div>
+         
+   
+
+        <script>
+             var app = new Vue({
+
+            el:'#app',
+            data:{
+                message:'页面加载与' + new Date().toLocaleString()
+
+            },
+            component:('item',{template:'<li>一个单个组件</li>'})
+
+             })
+
+            
+
+        </script>
+    </body>
+</html>
