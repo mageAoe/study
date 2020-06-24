@@ -56,6 +56,7 @@
                 computed:{
                     fuilterUser(){
                         if(!this.val) return false
+                        
                         return this.Finishing.filter((val)=>{
                            return val.indexOf(this.val) !== -1
                         })
@@ -84,10 +85,7 @@
 
                         }else if(item.keyCode === 13){
                             this.val = this.fuilterUser[this.indexseclet]
-                            var aaa = this.val  
-                            if(this.val === aaa){
-                                this.fuilterUser = []
-                            }
+                        
                         }
                         //event.preventDefault() 阻止事件默认行为  vue可以用prevent
                     }

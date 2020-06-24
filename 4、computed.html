@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title></title>
-        <meta name="description" >
+        <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     </head>
@@ -16,23 +16,30 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         <div id="app">
-            <div v-for="(i,j) in arr">
-                <span>{{i*j}}</span>
-            </div>
+            <p>{{result}}</p>
         </div>
-        
-        <script >
-        //打印99乘法表
-           const vue = new Vue({
+
+        <script>
+            new Vue({
             el:'#app',
-            data:{
-                arr:[1,2,3,4,5,6,7,8,9],
-                arr1:[1,2,3,4,5,6,7,8,9]
+            methods:{
+
+            },
+            computed:{
+                //computed里面全都是函数
+                //函数必须要有一个返回值
+                //computed使用函数时不需要括号
+                result(){
+                    //conputed里的函数，只要引用了当前实例的任何变量
+                    //当实例里额任意变量发生变化，computed都会重新返回新的值
+                    return 'haha'
+                    
+                }
 
             }
 
-           })
-
+        })
         </script>
+
     </body>
 </html>

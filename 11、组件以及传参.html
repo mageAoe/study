@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            
+        </div>
+
+        <script>
+
+
+            Vue.component('and-group',{
+                props:['data'],//这个地方接收到的参数可以直接当作data里面的数据进行使用
+                template:`
+                    <div class = 'btn-button'>
+                        <button
+                         v-for='(item,index) in data'
+                         @click = 'runInter(item,index)'
+                        >{{item}}</button>
+                        <slot></slot>
+                    </div>
+                `,
+                data(){ //组件里的data必须是个函数
+                    return {
+                        city:['北京',"上海","广东","湖南"]
+                    }
+                },
+                //要想在组件外部定义一个监听事件的话，就得使用$emit进行接收
+                //$emit()这个括号里面的事件名是在外部传过来的，第一个参数是事件名，第二个参数可以是数据,只能传递两个参数
+                methods:{
+                    runInter(item,index){
+                        this.$emit('aaa',item)
+                        console.log('点我了',index)
+                    }
+                }
+            })
+
+            new Vue({
+                el:'#app',
+                methods:{
+                    run(n){
+                        console.log('我跑起来了',n)
+                    }
+                },
+                //template要想传递参数到组件内部，就需要使用v-bind进行传递，组件内部使用props接收
+                //外部的template的事件名可以自定义@后面接的就是要监听的事件名，=后面的就是methods里面写的事件函数
+                //要想让组件变成一个双标签，就得在子组件内部加入一个<slot></slot>
+                template:`  
+                 <and-group @aaa= "run" :data='data'>
+                 xxx
+                 </and-group>
+                `,
+                data:{
+                    data:['北京1',"上海1","广东1","湖南1"]
+                },
+                
+
+            })
+        </script>
+    </body>
+</html>

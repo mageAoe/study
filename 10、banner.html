@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <style>
+            .app{width:100%;height: 350px;position: relative;}
+            .app div{width:800px;height: 300px;border: 1px solid #000;position: absolute;}
+        </style>
+   </head>
+   <body>
+        <div id="app">
+            <div class="app" >
+                <div v-for = '(src,index) in banner' 
+                v-if ='switchindex===index'
+                >
+                    <img :src="src" style="height: 300px;width: 800px;">
+                </div>
+                
+            </div>
+            <button @click = 'last'>上一个</button>
+            <button @click = 'next'>下一个</button>
+        </div>
+
+        <script>
+             new Vue({
+                 el:'#app',
+                 data:{
+                     
+                     banner:[
+                         'http://img2.a0bi.com/upload/ttq/20150713/1436756859971.jpg',
+                         'https://c-ssl.duitang.com/uploads/item/201803/01/20180301225143_yUdVf.jpeg',
+                         'http://b.zol-img.com.cn/desk/bizhi/start/3/1372320224830.jpg'
+                     ],
+                     switchindex: 0 ,
+                 },
+                 watch:{
+                    switchindex(val){
+                        if(this.switchindex > this.banner.length -1){
+                            this.switchindex = 0
+                        }
+                        if(this.switchindex < 0){
+                            this.switchindex = this.banner.length -1
+                        }
+                    }
+                 },
+                 methods:{
+                    last(){
+                        this.switchindex--
+                    },
+                    next(){
+                        this.switchindex++
+                    }
+                 }
+
+             })
+        </script>
+   </body>
+</html>

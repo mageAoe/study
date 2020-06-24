@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <div v-for = '(i,row) in Array(9)'>
+                <span v-for = '(i,col) in Array(row + 1)'> <!--循环9次，返回9个数组-->
+                     {{row + 1}} * {{col +1}} = {{(row + 1)*(col +1)}}
+                </span>
+                
+            </div>
+
+<!--反向99乘法表-->
+            <div style="margin-top: 50px;" v-for = 'i in num'>
+                
+                <span v-for = 'j in num'>
+                  {{i}} * {{j}} = {{(i)*(j)}}
+                    
+                </span>
+            </div>
+        </div>
+        
+        <script>
+          var vm =   new Vue({
+                el:'#app',
+                methods:{
+
+            },
+            data:{
+                aaa:9,
+                num:[9,8,7,6,5,4,3,2,1]
+            }
+
+            })
+            
+        </script>
+    </body>
+</html>
